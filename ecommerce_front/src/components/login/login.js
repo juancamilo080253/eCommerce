@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import './login.css';
 
 export default class login extends React.Component {
   constructor(props) {
@@ -16,9 +17,14 @@ export default class login extends React.Component {
 
   render() {
     return (
-      <Container id="login-container" style={{ marginTop: 200 }}>
+      <Container id="login-container">
         <Row>
-          <Col>
+          <Col
+          sm="12"
+          xs="12"
+          md={{span: 4 , offset:4 }}
+          lg={{span: 4 , offset:4 }}
+          xl={{span: 4 , offset:4 }}>
             <Row>
               <h2> Iniciar sesión </h2>
             </Row>
