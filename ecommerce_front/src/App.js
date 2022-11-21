@@ -5,6 +5,7 @@ import {Container} from 'react-bootstrap';
 //import Login from './components/login/login';
 import Menu from './components/navbar/navbar';
 import Approuter from './components/router/router';
+//import Inicio from './components/index';
 
 // <login /> para llamar los componentes
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Menu />
       <Container>
+      
       <Approuter />
       </Container>
     </div> 
