@@ -10,6 +10,7 @@ import paginationFactory, {
 import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
+import Loading from "../loading/loading";
 
 const { SearchBar } = Search;
 
@@ -17,6 +18,7 @@ export default  class DataGrid extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
+            Loading:false,
             rows:[],
          }
     }
@@ -26,12 +28,15 @@ export default  class DataGrid extends React.Component {
     }
 
     getData(){
+        this.setState({loading:true});
         request
           .get(this.props.url)
           .then((response) => {
-            this.setState({rows: response.data});
+            this.setState({rows: response.data,
+            loading:false});
           })
           .catch((err) => {
+            this.setState({loading:false});
             console.log(err);
           });
     }
@@ -41,7 +46,9 @@ export default  class DataGrid extends React.Component {
             custom: true,
             totalSize: this.state.rows.length,
           };
-        return ( 
+        return (
+            <>
+            <Loading show={this.state.loading} />
             <ToolkitProvider
             keyField="tp"
             data={this.state.rows}
@@ -75,6 +82,8 @@ export default  class DataGrid extends React.Component {
               </>
             )}
           </ToolkitProvider>
+          </>
          );
     }
 }
+ 
